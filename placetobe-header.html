@@ -1,0 +1,87 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../placetobe-behaviors/placetobe-styles-behavior.html">
+<link rel="import" href="../placetobe-styles/placetobe-styles.html">
+<link rel="import" href="../placetobe-logo/placetobe-logo.html">
+
+<!--
+`placetobe-header`
+Placetobe Header
+
+@demo demo/index.html 
+-->
+
+<dom-module id="placetobe-header">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      :host header {
+        width: 100%;
+        height: 112px;
+        box-shadow: 0 2px 4px rgba(0,0,0,.0);
+        z-index: 5;
+        transition: 0.5s all;
+        display: flex;
+        align-items: center;
+      }
+
+      :host nav {
+        display: flex;
+        width: var(--placetobe-layout-width);
+        margin: 0 auto;
+      }
+
+      placetobe-logo {
+        flex: none;
+        align-self: flex-start;
+        width: 168px;
+        height: 36px;
+      }
+
+      ul {
+        flex: 2;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      ul li {
+        @apply(--placetobe-font-heading4);
+        margin-left: 36px;
+      }
+
+      ul li a {
+        text-decoration: none;
+        color: var(--placetobe-color-darkblue);
+      }
+    </style>
+
+    <header>
+      <nav>
+        <placetobe-logo></placetobe-logo>
+        <ul>
+          <li><a href="#">campagnes</a></li>
+          <li><a href="#">start project</a></li>
+          <li><a href="#">investeer</a></li>
+        </ul>
+      </nav>
+    </header>
+
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'placetobe-header',
+      behaviors: [PlacetobeStylesBehavior],
+
+      properties: {
+      },
+
+    });
+  </script>
+</dom-module>
