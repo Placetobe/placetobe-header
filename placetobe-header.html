@@ -15,16 +15,27 @@ Placetobe Header
     <style>
       :host {
         display: block;
+        --box-shadow-color: rgba(0,0,0,0);
+      }
+
+      :host[compact] {
+        --box-shadow-color: rgba(0,0,0,.50);
       }
 
       :host header {
         width: 100%;
         height: 112px;
-        box-shadow: 0 2px 4px rgba(0,0,0,.0);
+        box-shadow: 0 2px 4px var(--box-shadow-color);
         z-index: 5;
         transition: 0.5s all;
         display: flex;
         align-items: center;
+        transition: 0.5s all;
+      }
+
+      :host[compact] header {
+        background-color: white;        
+        height: 72px;
       }
 
       :host nav {
@@ -80,6 +91,13 @@ Placetobe Header
       behaviors: [PlacetobeStylesBehavior],
 
       properties: {
+
+        compact: {
+          type: Boolean,
+          value: false,
+          reflectToAttribute: true
+        }
+
       },
 
     });
