@@ -1,4 +1,5 @@
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../app-route/app-location.html">
 <link rel="import" href="../placetobe-behaviors/placetobe-styles-behavior.html">
 <link rel="import" href="../placetobe-styles/placetobe-styles.html">
 <link rel="import" href="../placetobe-logo/placetobe-logo.html">
@@ -18,7 +19,7 @@ Placetobe Header
         --box-shadow-color: rgba(0,0,0,0);
       }
 
-      :host[compact] {
+      :host[collapsed] {
         --box-shadow-color: rgba(0,0,0,.50);
       }
 
@@ -33,25 +34,27 @@ Placetobe Header
         transition: 0.5s all;
       }
 
-      :host[compact] header {
+      :host[collapsed] header {
         background-color: white;        
         height: 72px;
       }
 
       :host nav {
         display: flex;
-        width: var(--placetobe-layout-width);
+        width: calc(var(--placetobe-layout-width) + 36px);
         margin: 0 auto;
+        padding: 0 18px;
       }
 
-      placetobe-logo {
+      :host placetobe-logo {
         flex: none;
         align-self: flex-start;
         width: 168px;
         height: 36px;
+        --placetobe-logo-color: var(--placetobe-header-tint-color, var(--placetobe-color-darkblue));
       }
 
-      ul {
+      :host ul {
         flex: 2;
         list-style: none;
         margin: 0;
@@ -60,24 +63,46 @@ Placetobe Header
         justify-content: flex-end;
       }
 
-      ul li {
-        @apply(--placetobe-font-heading4);
+      :host ul li {
+        @apply(--placetobe-font-body-serif-bold);
         margin-left: 36px;
       }
 
-      ul li a {
+      :host ul li a {
         text-decoration: none;
-        color: var(--placetobe-color-darkblue);
+        color: var(--placetobe-header-tint-color, var(--placetobe-color-darkblue));
+        transition: 0.2s color;
       }
-    </style>
+
+      :host ul li a[data-active] {
+        color: var(--placetobe-header-tint-active-color, white);        
+      }
+
+      :host[collapsed] ul li a {
+        text-decoration: none;
+        color: var(--placetobe-header-tint-color, var(--placetobe-color-darkblue));
+      }
+
+      :host ul li a:not([data-active]):hover {
+        opacity: 0.75;
+      }
+
+      :host[collapsed] ul li a[data-active] {
+        color: var(--placetobe-header-tint-active-color, var(--placetobe-color-red));        
+      }    </style>
+
+    <app-location
+      route="{{campaignRoute}}"
+      path="{{campaignPath}}"
+    ></app-location>
 
     <header>
       <nav>
         <placetobe-logo></placetobe-logo>
         <ul>
-          <li><a href="#">campagnes</a></li>
-          <li><a href="#">start project</a></li>
-          <li><a href="#">investeer</a></li>
+          <li><a href="/campagnes" data-path="campagnes" data-active$="[[campaignPageActive]]" on-tap="_handleButtonTap">campagnes</a></li>
+          <li><a href="/start-project" data-path="start-project" data-active$="[[entrepreneurPageActive]]" on-tap="_handleButtonTap">start project</a></li>
+          <li><a href="/investeren" data-path="investeren" data-active$="[[investPageActive]]" on-tap="_handleButtonTap">investeer</a></li>
         </ul>
       </nav>
     </header>
@@ -92,13 +117,51 @@ Placetobe Header
 
       properties: {
 
-        compact: {
+        collapsed: {
           type: Boolean,
           value: false,
           reflectToAttribute: true
+        },
+
+        currentPage: {
+          type: String,
+          value: 'campagnes',
+          notify: true
+        },
+
+        campaignPageActive: {
+          type: Boolean,
+          computed: '_computeCampaignPageActive(currentPage)'
+        },
+
+        investPageActive: {
+          type: Boolean,
+          computed: '_computeInvestPageActive(currentPage)'
+        },
+
+        entrepreneurPageActive: {
+          type: Boolean,
+          computed: '_computeEntrepreneurPageActive(currentPage)'
         }
 
       },
+
+      _computeCampaignPageActive: function(currentPage) {
+        return (currentPage == 'campagnes');
+      },
+
+      _computeInvestPageActive: function(currentPage) {
+        return (currentPage == 'investeren');
+      },
+
+      _computeEntrepreneurPageActive: function(currentPage) {
+        return (currentPage == 'start-project');
+      },
+
+      _handleButtonTap: function(evt) {
+        this.currentPage = evt.target.getAttribute('data-path');
+      }
+
 
     });
   </script>

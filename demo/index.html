@@ -12,6 +12,16 @@
     <link rel="import" href="../placetobe-header.html">
 
     <style is="custom-style" include="demo-pages-shared-styles">
+      .red {
+        --placetobe-header-tint-color: var(--placetobe-color-green);
+      }
+
+      demo-snippet {
+        --demo-snippet-demo: {
+          display: block;
+          background-color: #ddd;
+        }
+      }
     </style>
   </head>
   <body>
@@ -25,13 +35,19 @@
         </template>
       </demo-snippet>
 
-      <h3>Compact</h3>
+      <h3>Collapsed</h3>
       <demo-snippet>
         <template>
-          <placetobe-header compact></placetobe-header>
+          <placetobe-header collapsed></placetobe-header>
         </template>
       </demo-snippet>
 
+      <h3>Custom tint color</h3>
+      <demo-snippet>
+        <template>
+          <placetobe-header class="red"></placetobe-header>
+        </template>
+      </demo-snippet>
     </div>
 
   </body>
