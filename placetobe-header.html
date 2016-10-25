@@ -3,6 +3,8 @@
 <link rel="import" href="../placetobe-behaviors/placetobe-styles-behavior.html">
 <link rel="import" href="../placetobe-styles/placetobe-styles.html">
 <link rel="import" href="../placetobe-logo/placetobe-logo.html">
+<link rel="import" href="../placetobe-icons/placetobe-menu-icon.html">
+<link rel="import" href="../placetobe-main-menu/placetobe-main-menu.html">
 
 <!--
 `placetobe-header`
@@ -44,6 +46,7 @@ Placetobe Header
         width: calc(var(--placetobe-layout-width) + 36px);
         margin: 0 auto;
         padding: 0 18px;
+        justify-content: space-between;
       }
 
       :host placetobe-logo {
@@ -54,13 +57,34 @@ Placetobe Header
         --placetobe-logo-color: var(--placetobe-header-tint-color, var(--placetobe-color-darkblue));
       }
 
+      :host placetobe-menu-icon {
+        flex: none;
+        align-self: flex-end;
+        width: 36px;
+        height: 36px;
+        --placetobe-icon-color: var(--placetobe-header-tint-color, var(--placetobe-color-darkblue));
+        cursor: pointer;
+      }
+
+      @media (min-width: 991px) {
+        :host placetobe-menu-icon {
+          display: none;
+        }
+      }
+
       :host ul {
         flex: 2;
         list-style: none;
         margin: 0;
         padding: 0;
-        display: flex;
+        display: none;
         justify-content: flex-end;
+      }
+
+      @media (min-width: 991px) {
+        :host ul {
+          display: flex;
+        }
       }
 
       :host ul li {
@@ -89,7 +113,18 @@ Placetobe Header
 
       :host[collapsed] ul li a[data-active] {
         color: var(--placetobe-header-tint-active-color, var(--placetobe-color-red));        
-      }    </style>
+      }
+
+      :host placetobe-main-menu {
+        position: fixed;
+        top:0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 2;
+      }
+
+      </style>
 
     <app-location
       route="{{campaignRoute}}"
@@ -104,8 +139,11 @@ Placetobe Header
           <li><a href="/start-project" data-path="start-project" data-active$="[[entrepreneurPageActive]]" on-tap="_handleButtonTap">start project</a></li>
           <li><a href="/investeren" data-path="investeren" data-active$="[[investPageActive]]" on-tap="_handleButtonTap">investeer</a></li>
         </ul>
+        <placetobe-menu-icon on-tap="_openMenu"></placetobe-menu-icon>
       </nav>
     </header>
+
+    <placetobe-main-menu hidden$="[[!menuOpen]]" on-tap-close="_closeMenu"></placetobe-main-menu>
 
   </template>
 
@@ -142,6 +180,11 @@ Placetobe Header
         entrepreneurPageActive: {
           type: Boolean,
           computed: '_computeEntrepreneurPageActive(currentPage)'
+        },
+
+        menuOpen: {
+          type: Boolean,
+          value: false
         }
 
       },
@@ -160,6 +203,14 @@ Placetobe Header
 
       _handleButtonTap: function(evt) {
         this.currentPage = evt.target.getAttribute('data-path');
+      },
+
+      _openMenu: function() {
+        this.menuOpen = true;
+      },
+
+      _closeMenu: function() {
+        this.menuOpen = false;
       }
 
 
