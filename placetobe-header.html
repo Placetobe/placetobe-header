@@ -123,6 +123,10 @@ Placetobe Header
         z-index: 2;
       }
 
+      :host([collapsed]) placetobe-main-menu {
+        --placetobe-main-menu-menu-icon-top: calc( var(--placetobe-margin) * 2 );
+      }
+
       :host placetobe-main-menu[hidden] {
         display: none;
       }
