@@ -21,7 +21,7 @@ Placetobe Header
         --box-shadow-color: rgba(0,0,0,0);
       }
 
-      :host[collapsed] {
+      :host([collapsed]) {
         --box-shadow-color: rgba(0,0,0,.50);
       }
 
@@ -36,7 +36,7 @@ Placetobe Header
         transition: 0.5s all;
       }
 
-      :host[collapsed] header {
+      :host([collapsed]) header {
         background-color: white;        
         height: 72px;
       }
@@ -102,7 +102,7 @@ Placetobe Header
         color: var(--placetobe-header-tint-active-color, white);        
       }
 
-      :host[collapsed] ul li a {
+      :host([collapsed]) ul li a {
         text-decoration: none;
         color: var(--placetobe-header-tint-color, var(--placetobe-color-darkblue));
       }
@@ -111,7 +111,7 @@ Placetobe Header
         opacity: 0.75;
       }
 
-      :host[collapsed] ul li a[data-active] {
+      :host([collapsed]) ul li a[data-active] {
         color: var(--placetobe-header-tint-active-color, var(--placetobe-color-red));        
       }
 
@@ -122,6 +122,10 @@ Placetobe Header
         bottom: 0;
         right: 0;
         z-index: 2;
+      }
+
+      :host placetobe-main-menu[hidden] {
+        display: none;
       }
 
       </style>
