@@ -26,13 +26,12 @@ Placetobe Header
       }
 
       :host header {
+        @apply(--placetobe-flex-layout--horizontal);
+        @apply(--placetobe-cross-align--center);
         width: 100%;
         height: 112px;
         box-shadow: 0 2px 4px var(--box-shadow-color);
         z-index: 5;
-        transition: 0.5s all;
-        display: flex;
-        align-items: center;
         transition: 0.5s all;
       }
 
@@ -42,26 +41,26 @@ Placetobe Header
       }
 
       :host nav {
-        display: flex;
+        @apply(--placetobe-flex-layout--horizontal);
+        @apply(--placetobe-flex-align--space-between);
         width: calc(var(--placetobe-layout-width) + 36px);
         margin: 0 auto;
-        padding: 0 18px;
-        justify-content: space-between;
+        padding: 0 var(--placetobe-margin);
       }
 
       :host placetobe-logo {
-        flex: none;
-        align-self: flex-start;
+        @apply(--placetobe-flex-item--none);
+        @apply(--placetobe-item-align--start);
         width: 168px;
-        height: 36px;
+        height: calc( var(--placetobe-margin) * 2 );
         --placetobe-logo-color: var(--placetobe-header-tint-color, var(--placetobe-color-darkblue));
       }
 
       :host placetobe-menu-icon {
-        flex: none;
-        align-self: flex-end;
-        width: 36px;
-        height: 36px;
+        @apply(--placetobe-flex-item--none);
+        @apply(--placetobe-item-align--end);
+        width: calc( var(--placetobe-margin) * 2 );
+        height: calc( var(--placetobe-margin) * 2 );
         --placetobe-icon-color: var(--placetobe-header-tint-color, var(--placetobe-color-darkblue));
         cursor: pointer;
       }
@@ -73,23 +72,23 @@ Placetobe Header
       }
 
       :host ul {
-        flex: 2;
+        @apply(--placetobe-flex-item--2);
+        @apply(--placetobe-flex-align--end);
         list-style: none;
         margin: 0;
         padding: 0;
         display: none;
-        justify-content: flex-end;
       }
 
       @media (min-width: 991px) {
         :host ul {
-          display: flex;
+          @apply(--placetobe-flex-layout--horizontal);
         }
       }
 
       :host ul li {
         @apply(--placetobe-font-body-serif-bold);
-        margin-left: 36px;
+        margin-left: calc( var(--placetobe-margin) * 2 );
       }
 
       :host ul li a {
