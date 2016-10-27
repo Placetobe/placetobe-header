@@ -38,12 +38,14 @@ Placetobe Header
       :host([collapsed]) header {
         background-color: white;        
         height: 72px;
+        @apply(--placetobe-flex-layout--horizontal);
       }
 
       :host nav {
+        @apply(--placetobe-flex-item--1);
         @apply(--placetobe-flex-layout--horizontal);
         @apply(--placetobe-flex-align--space-between);
-        width: calc(var(--placetobe-layout-width) + 36px);
+        max-width: calc( var(--placetobe-layout-width) + (var(--placetobe-margin) * 2) );
         margin: 0 auto;
         padding: 0 var(--placetobe-margin);
       }
