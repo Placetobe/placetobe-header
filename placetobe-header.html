@@ -176,19 +176,28 @@ Placetobe Header
           notify: true
         },
 
+        homePageActive: {
+          type: Boolean,
+          computed: '_computeHomeActive(currentPage)',
+          notify: true
+        },
+
         campaignPageActive: {
           type: Boolean,
-          computed: '_computeCampaignPageActive(currentPage)'
+          computed: '_computeCampaignPageActive(currentPage)',
+          notify: true
         },
 
         investPageActive: {
           type: Boolean,
-          computed: '_computeInvestPageActive(currentPage)'
+          computed: '_computeInvestPageActive(currentPage)',
+          notify: true
         },
 
         entrepreneurPageActive: {
           type: Boolean,
-          computed: '_computeEntrepreneurPageActive(currentPage)'
+          computed: '_computeEntrepreneurPageActive(currentPage)',
+          notify: true
         },
 
         menuOpen: {
@@ -196,6 +205,10 @@ Placetobe Header
           value: false
         }
 
+      },
+
+      _computeHomeActive: function(currentPage) {
+        return (!currentPage || currentPage == '');
       },
 
       _computeCampaignPageActive: function(currentPage) {
