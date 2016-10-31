@@ -166,13 +166,13 @@ Placetobe Header
 
         currentPage: {
           type: String,
-          value: 'campagnes',
           notify: true
         },
 
         homePageActive: {
           type: Boolean,
           computed: '_computeHomeActive(currentPage)',
+          value: true,
           notify: true
         },
 
