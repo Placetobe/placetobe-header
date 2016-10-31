@@ -16,29 +16,22 @@ Placetobe Header
 <dom-module id="placetobe-header">
   <template>
     <style>
-      :host {
-        display: block;
-        --box-shadow-color: rgba(0,0,0,0);
-      }
-
-      :host([collapsed]) {
-        --box-shadow-color: rgba(0,0,0,.50);
-      }
 
       :host header {
         @apply(--placetobe-flex-layout--horizontal);
         @apply(--placetobe-cross-align--center);
+        @apply(--placetobe-box-shadow);
         width: 100%;
         height: 112px;
-        box-shadow: 0 2px 4px var(--box-shadow-color);
         z-index: 5;
         transition: 0.5s all;
       }
 
       :host([collapsed]) header {
+        @apply(--placetobe-flex-layout--horizontal);
+        @apply(--placetobe-box-shadow--none);
         background-color: white;        
         height: 72px;
-        @apply(--placetobe-flex-layout--horizontal);
       }
 
       :host nav {
