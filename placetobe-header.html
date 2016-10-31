@@ -20,7 +20,7 @@ Placetobe Header
       :host header {
         @apply(--placetobe-flex-layout--horizontal);
         @apply(--placetobe-cross-align--center);
-        @apply(--placetobe-box-shadow);
+        @apply(--placetobe-box-shadow--none);
         width: 100%;
         height: 112px;
         z-index: 5;
@@ -29,7 +29,7 @@ Placetobe Header
 
       :host([collapsed]) header {
         @apply(--placetobe-flex-layout--horizontal);
-        @apply(--placetobe-box-shadow--none);
+        @apply(--placetobe-box-shadow);
         background-color: white;        
         height: 72px;
       }
