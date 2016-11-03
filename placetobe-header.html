@@ -129,18 +129,13 @@ Placetobe Header
 
       </style>
 
-    <app-location
-      route="{{campaignRoute}}"
-      path="{{campaignPath}}"
-    ></app-location>
-
     <header>
       <nav>
         <a href="/"><placetobe-logo></placetobe-logo></a>
         <ul>
-<!--           <li><a href="/campagnes" data-path="campagnes" data-active$="[[campaignPageActive]]" on-tap="_handleButtonTap">campagnes</a></li>
- -->          <li><a href="/start-project" data-path="start-project" data-active$="[[entrepreneurPageActive]]" on-tap="_handleButtonTap">start project</a></li>
-          <li><a href="/investeren" data-path="investeren" data-active$="[[investPageActive]]" on-tap="_handleButtonTap">investeer</a></li>
+          <li><a href="/start-project" data-path="start-project" data-active$="[[entrepreneurPageActive]]">start project</a></li>
+          <li><a href="/tarieven" data-path="tarieven" data-active$="[[pricingPageActive]]">tarieven</a></li>
+          <li><a href="/investeren" data-path="investeren" data-active$="[[investPageActive]]">investeer</a></li>
         </ul>
         <placetobe-menu-icon on-tap="_openMenu"></placetobe-menu-icon>
       </nav>
@@ -164,33 +159,29 @@ Placetobe Header
           reflectToAttribute: true
         },
 
-        currentPage: {
-          type: String,
-          notify: true
-        },
-
         homePageActive: {
           type: Boolean,
-          computed: '_computeHomeActive(currentPage)',
           value: true,
           notify: true
         },
 
         campaignPageActive: {
           type: Boolean,
-          computed: '_computeCampaignPageActive(currentPage)',
+          notify: true
+        },
+
+        pricingPageActive: {
+          type: Boolean,
           notify: true
         },
 
         investPageActive: {
           type: Boolean,
-          computed: '_computeInvestPageActive(currentPage)',
           notify: true
         },
 
         entrepreneurPageActive: {
           type: Boolean,
-          computed: '_computeEntrepreneurPageActive(currentPage)',
           notify: true
         },
 
@@ -209,26 +200,6 @@ Placetobe Header
           value: false
         }
 
-      },
-
-      _computeHomeActive: function(currentPage) {
-        return (!currentPage || currentPage == '');
-      },
-
-      _computeCampaignPageActive: function(currentPage) {
-        return (currentPage == 'campagnes');
-      },
-
-      _computeInvestPageActive: function(currentPage) {
-        return (currentPage == 'investeren');
-      },
-
-      _computeEntrepreneurPageActive: function(currentPage) {
-        return (currentPage == 'start-project');
-      },
-
-      _handleButtonTap: function(evt) {
-        this.currentPage = evt.target.getAttribute('data-path');
       },
 
       _openMenu: function() {
