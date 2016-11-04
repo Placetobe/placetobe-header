@@ -19,9 +19,6 @@ Placetobe Header
 
       :host header {
         display: block;
-        @apply(--placetobe-flex-layout--horizontal);
-        @apply(--placetobe-cross-align--center);
-        @apply(--placetobe-box-shadow--none);
         width: 100%;
         height: 112px;
         z-index: 5;
@@ -29,7 +26,6 @@ Placetobe Header
       }
 
       :host([collapsed]) header {
-        @apply(--placetobe-flex-layout--horizontal);
         @apply(--placetobe-box-shadow);
         background-color: white;        
         height: 72px;
@@ -37,10 +33,11 @@ Placetobe Header
 
       :host nav {
         display: block;
+        height: 100%;
         @apply(--placetobe-border-box);
-        @apply(--placetobe-flex-item--1);
         @apply(--placetobe-flex-layout--horizontal);
         @apply(--placetobe-flex-align--space-between);
+        @apply(--placetobe-cross-align--center);
         max-width: calc( var(--placetobe-layout-width) + (var(--placetobe-margin) * 2) );
         margin: 0 auto;
         padding: 0 var(--placetobe-margin);
@@ -56,7 +53,7 @@ Placetobe Header
 
       :host placetobe-menu-icon {
         @apply(--placetobe-flex-item--none);
-        @apply(--placetobe-item-align--end);
+        @apply(--placetobe-item-align--center);
         width: calc( var(--placetobe-margin) * 2 );
         height: calc( var(--placetobe-margin) * 2 );
         --placetobe-icon-color: var(--placetobe-header-tint-color, var(--placetobe-color-darkblue));
