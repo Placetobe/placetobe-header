@@ -207,7 +207,9 @@ Placetobe Header
       },
 
       _closeMenu: function() {
-        this.menuOpen = false;
+        window.setTimeout((function() {
+          this.menuOpen = false;
+        }).bind(this), 100);
       }
 
 
