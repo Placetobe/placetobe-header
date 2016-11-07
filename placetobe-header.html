@@ -145,7 +145,11 @@ Placetobe Header
       </nav>
     </header>
 
-    <placetobe-main-menu hidden$="[[!menuOpen]]" on-tap-close="_closeMenu"></placetobe-main-menu>
+    <placetobe-main-menu
+      location-path="{{locationPath}}"
+      hidden$="[[!menuOpen]]"
+      on-tap-close="_closeMenu"
+    ></placetobe-main-menu>
 
   </template>
 
@@ -156,6 +160,12 @@ Placetobe Header
       behaviors: [PlacetobeStylesBehavior],
 
       properties: {
+
+        locationPath: {
+          type: String,
+          value: null,
+          notify: true
+        },
 
         collapsed: {
           type: Boolean,
