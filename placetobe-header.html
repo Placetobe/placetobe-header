@@ -28,7 +28,15 @@ Placetobe Header
       :host([collapsed]) header {
         @apply(--placetobe-box-shadow);
         background-color: white;        
-        height: 72px;
+        height: calc( var(--placetobe-margin) * 3 );
+      }
+
+      @media (min-width: 601px) {
+        :host([collapsed]) header {
+          @apply(--placetobe-box-shadow);
+          background-color: white;        
+          height: 72px;
+        }
       }
 
       :host nav {
@@ -46,18 +54,32 @@ Placetobe Header
       :host placetobe-logo {
         @apply(--placetobe-flex-item--none);
         @apply(--placetobe-item-align--start);
-        width: 168px;
-        height: calc( var(--placetobe-margin) * 2 );
+        width: 126px;
+        height: calc( var(--placetobe-margin) * 1.5 );
         --placetobe-logo-color: var(--placetobe-header-tint-color, var(--placetobe-color-darkblue));
+      }
+
+      @media (min-width: 601px) {
+        :host placetobe-logo {
+          width: 168px;
+          height: calc( var(--placetobe-margin) * 2 );
+        }
       }
 
       :host placetobe-menu-icon {
         @apply(--placetobe-flex-item--none);
         @apply(--placetobe-item-align--center);
-        width: calc( var(--placetobe-margin) * 2 );
-        height: calc( var(--placetobe-margin) * 2 );
+        width: calc( var(--placetobe-margin) * 1.5 );
+        height: calc( var(--placetobe-margin) * 1.5 );
         --placetobe-icon-color: var(--placetobe-header-tint-color, var(--placetobe-color-darkblue));
         cursor: pointer;
+      }
+
+      @media (min-width: 601px) {
+        :host placetobe-menu-icon {
+          width: calc( var(--placetobe-margin) * 2 );
+          height: calc( var(--placetobe-margin) * 2 );          
+        }
       }
 
       @media (min-width: 991px) {
