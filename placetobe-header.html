@@ -239,8 +239,18 @@ Placetobe Header
         menuOpen: {
           type: Boolean,
           value: false
+        },
+
+        campaignArrayHidden: {
+          type: Boolean,
+          value: true,
+          computed: '_checkCampaignArrayLength(apiCampaignData)'
         }
 
+      },
+
+      _checkCampaignArrayLength: function(apiCampaignData) {
+        return (apiCampaignData.length == 0) ? true : false;
       },
 
       _openMenu: function() {
